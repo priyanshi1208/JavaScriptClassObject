@@ -114,17 +114,24 @@ class AddressBook{
     searchByCityState(cityState){
         this.addressbookArray.filter(person=>{
             if(person.city===cityState||person.state===cityState)
-            console.log(person.firstName,person.lastName,person.address,person.city,person.state,person.zip,person.phoneNumber,person.email);
+                console.log(person.firstName,person.lastName,person.address,person.city,person.state,person.zip,person.phoneNumber,person.email);
         });
+    }
+    sortByName(){
+        this.addressbookArray.sort((a,b)=>{
+            return a.firstName.localeCompare(b.firstName);
+        })
     }
 }
 let addressbook=new AddressBook();
 var person1=new Person("priyanshi","shukla","987hvhj","kanpur","uttarPradesh","208021","8929373728","pri.shukla22082");
-var person2=new Person("ayush","shukla","987hvhj","kanpur","uttarPrades","208021","8929373728","pri.shukla22082")
+var person2=new Person("ayush","shukla","987hvhj","kanpur","uttarPrades","208021","8929373728","pri.shukla22082");
+var person3=new Person("piyush","shukla","987hvhj","kanpur","uttarPrades","208021","8929373728","pri.shukla22082");
 addressbook.addContact(person1);
 addressbook.addContact(person2);
-//addressbook.deleteContact("priyanshi");
-//addressbook.showContact();
+addressbook.addContact(person3);
 addressbook.searchByCityState("uttarPradesh");
-//console.log(addressbook.searchByCityState("kanpur"));
+addressbook.sortByName();
+addressbook.showContact();
+
 
