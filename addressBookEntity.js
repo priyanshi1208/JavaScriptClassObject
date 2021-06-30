@@ -92,10 +92,19 @@ class AddressBook{
             console.log(person.firstName,person.lastName,person.address,person.city,person.state,person.zip,person.phoneNumber,person.email);
         })
     }
+    editContact(firstName,editedDetail){
+        addressbook.addressbookArray.forEach(person=>{
+            if(person.firstName===firstName){
+                person.firstName=editedDetail;
+            }
+        })
+    }
 }
 let addressbook=new AddressBook();
 var person1=new Person("priyanshi","shukla","987hvhj","kanpur","uttarPradesh","208021","8929373728","pri.shukla22082");
 var person2=new Person("ayush","shukla","987hvhj","kanpur","uttarPradesh","208021","8929373728","pri.shukla22082")
 addressbook.addContact(person1);
 addressbook.addContact(person2);
+addressbook.showContact();
+addressbook.editContact("priyanshi","Priyanshi");
 addressbook.showContact();
