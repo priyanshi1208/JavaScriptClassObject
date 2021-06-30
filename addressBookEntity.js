@@ -106,10 +106,11 @@ class AddressBook{
             }
         })
     }
-    countPerson(){
-        this.addressbookArray.reduce(function(obj,person){
-            
-        });
+    countPerson(cityState){
+        return this.addressbookArray.reduce((counter,person)=>{
+            if(person.city===cityState||person.state===cityState)counter+=1;
+            return counter;
+        },0);
     }
     searchByCityState(cityState){
         this.addressbookArray.filter(person=>{
@@ -122,6 +123,7 @@ class AddressBook{
             return a.firstName.localeCompare(b.firstName);
         })
     }
+
 }
 let addressbook=new AddressBook();
 var person1=new Person("priyanshi","shukla","987hvhj","kanpur","uttarPradesh","208021","8929373728","pri.shukla22082");
@@ -130,8 +132,6 @@ var person3=new Person("piyush","shukla","987hvhj","kanpur","uttarPrades","20802
 addressbook.addContact(person1);
 addressbook.addContact(person2);
 addressbook.addContact(person3);
-addressbook.searchByCityState("uttarPradesh");
-addressbook.sortByName();
-addressbook.showContact();
+console.log(addressbook.countPerson("uttarPradesh"));
 
 
