@@ -88,14 +88,21 @@ class AddressBook{
         this.addressbookArray.push(person);
     }
     showContact(){
-        addressbook.addressbookArray.forEach(person=>{
+        this.addressbookArray.forEach(person=>{
             console.log(person.firstName,person.lastName,person.address,person.city,person.state,person.zip,person.phoneNumber,person.email);
         })
     }
     editContact(firstName,editedDetail){
-        addressbook.addressbookArray.forEach(person=>{
+        this.addressbookArray.forEach(person=>{
             if(person.firstName===firstName){
                 person.firstName=editedDetail;
+            }
+        })
+    }
+    deleteContact(firstName){
+        this.addressbookArray.forEach(person=>{
+            if(person.firstName===firstName){
+                this.addressbookArray.pop(person);
             }
         })
     }
@@ -106,5 +113,5 @@ var person2=new Person("ayush","shukla","987hvhj","kanpur","uttarPradesh","20802
 addressbook.addContact(person1);
 addressbook.addContact(person2);
 addressbook.showContact();
-addressbook.editContact("priyanshi","Priyanshi");
+addressbook.deleteContact("priyanshi");
 addressbook.showContact();
